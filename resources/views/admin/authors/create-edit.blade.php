@@ -12,7 +12,7 @@
 <div class="container-fluid px-xxl-65 px-xl-20">
     <!-- Title -->
     <div class="hk-pg-header">
-        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Create Book</h4>
+        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Author</h4>
     </div>
     <!-- /Title -->
 
@@ -20,74 +20,68 @@
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
-                <h5 class="hk-sec-title">Custom Bootstrap Form Validation</h5>
-                <p class="mb-40">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your form. For server side validation <a href="https://getbootstrap.com/docs/4.1/components/forms/#server-side" target="_blank">read full documentation</a>.</p>
                 <div class="row">
                     <div class="col-sm">
-                        <form class="needs-validation" novalidate>
+                        @if ($author->id)
+                        <form action="{{ route('authors.update', $author->id)}}" method="post" enctype="multipart/form-data" lass="needs-validation" novalidate>
+                            @method('PUT')
+                            <h5 class="hk-sec-title">Author Edit</h5>
+                            @else
+                                <form action="{{ route('authors.store') }}" method="post" enctype="multipart/form-data" lass="needs-validation" novalidate>
+                            <div class="tt-wrapper-inner">
+                                <h5 class="hk-sec-title">Author Create</h5>
+                            @endif
+                            @csrf
                             <div class="form-row">
                                 <div class="col-md-4 mb-10">
-                                    <label for="validationCustom01">First name</label>
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
+                                    <label for="validationAuthorName">Name</label>
+                                    <input type="text" class="form-control" id="validationAuthorName" placeholder="Name" name="name" required>
                                 </div>
                                 <div class="col-md-4 mb-10">
-                                    <label for="validationCustom02">Last name</label>
-                                    <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-10">
-                                    <label for="validationCustomUsername">Username</label>
+                                    <label for="validationAuthorEmail">Email</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
                                         </div>
-                                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-                                        <div class="invalid-feedback">
-                                            Please choose a username.
-                                        </div>
+                                        <input type="text" class="form-control" id="validationAuthorEmail" placeholder="email" aria-describedby="inputGroupPrepend" name="email" required>
                                     </div>
+                                </div>
+                                <div class="col-md-4 mb-10">
+                                    <label for="validationAuthorPhoneNo">Phone</label>
+                                    <input type="text" class="form-control" id="validationAuthorPhoneNo" name="phone" placeholder="Phone Number" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-10">
-                                    <label for="validationCustom03">City</label>
-                                    <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid city.
+                                    <div class="form-group mb-0">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Address</span>
+                                            </div>
+                                            <textarea class="form-control" aria-label="With textarea" name="address" required></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 mb-10">
-                                    <label for="validationCustom04">State</label>
-                                    <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid state.
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-10">
-                                    <label for="validationCustom05">Zip</label>
-                                    <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid zip.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check custom-control custom-checkbox">
-                                    <input type="checkbox" class="form-check-input custom-control-input" id="invalidCheck" required>
-                                    <label class="form-check-label custom-control-label" for="invalidCheck">
-                                        Agree to terms and conditions
-                                    </label>
-                                    <div class="invalid-feedback">
-                                        You must agree before submitting.
+                                <div class="col-md-6 mb-10">
+                                    <div class="form-group mb-0">
+                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Photo</span>
+                                            </div>
+                                            <div class="form-control text-truncate" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                                            <span class="input-group-append">
+                                                    <span class=" btn btn-primary btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span>
+                                            <input type="file" name="photo">
+                                            </span>
+                                            <a href="#" class="btn btn-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-success" type="submit">Submit</button>
+                            <button class="btn btn-danger" type="reset">Reset</button>
+                            <a href="{{route('authors.index')}}" class="btn btn-warning">Back</a>
                         </form>
                     </div>
                 </div>

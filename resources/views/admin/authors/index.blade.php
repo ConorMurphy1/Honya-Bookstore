@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
-                <h5 class="hk-sec-title">Add New</h5>
+                <a href="{{route('authors.create')}}" class="btn btn-success mb-4">Add New</a>
                 {{-- <p class="mb-40">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" target="_blank">View all options</a>.</p> --}}
                 <div class="row">
                     <div class="col-sm">

@@ -270,6 +270,9 @@ License: You must have a valid license purchased only from themeforest to legall
     <!-- Slimscroll JavaScript -->
     <script src="{{ asset('dashgrin/dashgrin_download_pack/html/dist/js/jquery.slimscroll.js')}}"></script>
 
+    <!-- Jasny-bootstrap  JavaScript -->
+    <script src="{{ asset('dashgrin/dashgrin_download_pack/html/vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js')}}"></script>
+
     <!-- Fancy Dropdown JS -->
     <script src="{{ asset('dashgrin/dashgrin_download_pack/html/dist/js/dropdown-bootstrap-extended.js')}}"></script>
 
